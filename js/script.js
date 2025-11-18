@@ -3,24 +3,62 @@
 const baseUrl = "https://lanciweb.github.io/demo/api/pictures/";
 const photosContainer = document.querySelector(".container");
 
- const myCreateElement = (tagType, className) => {
+function myCreateElement(
+  tagType,
+  className = [],
+  content = [],
+  callback = false
+) {
+  // tag 
   const newElem = document.createElement(tagType);
-  newElem.classList.add(className);
+  // class 
+  if (className.length > 0) {
+    for (let i = 0; i < className.length; i++) {
+      newElem.classList.add(className[i]);
+    }
+  }
+  // callback 
+  if (callback) {
+    callback(newElem);
+  }
+  // content
+  if (Array.isArray(content)) {
+    for (let i = 0; i < content.length; i++) {
+      newElem.appendChild(content[i]);
+    }
+  } else if (content instanceof HTMLElement) {
+    newElem.appendChild(content);
+  } else if (typeof content === "string") {
+    newElem.innerHTML = content;
+  } else {
+    console.error("Non posso aggiungere l'elemento");
+  }
+
+
+
   return newElem
- }
+}
 
 const createCard = (photo) => {
   const { title, url, date } = photo;
-  const colElem = myCreateElement('div', "col");
-  const cardElem = myCreateElement('div', "card");
-  colElem.append(cardElem);
-  const cardContent = myCreateElement('div', "card-content");
-  cardElem.append(cardContent);
-  cardContent.innerHTML = `
-          <img src="${url}" alt="${title}">
-          <time datetime="datetime">${date}</time>
-          <h2 class="card-title">${title}</h2>
-        `;
+  const colElem = myCreateElement('div', ["col"],
+    [
+      myCreateElement('div', ["card"],
+        [
+          myCreateElement('div', ["card-content"],
+            [
+              myCreateElement('img', ["img"], [], (element) => {
+                element.src = url;
+                element.alt = title;
+              }),
+              myCreateElement('time', ["date"], date, (element) => {
+                element.datetime = "datetime";
+              }),
+              myCreateElement('h2', ["card-title"], title)
+            ],
+          )
+        ])
+    ])
   return colElem
 }
 
@@ -32,5 +70,4 @@ axios
       const photoCard = createCard(photo);
       photosContainer.append(photoCard);
     })
-  });
-
+  })
