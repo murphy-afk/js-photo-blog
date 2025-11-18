@@ -13,9 +13,26 @@ img {
 /*******************************/
 body {
   background-image: url("../img/cork.png");
+  font-family: "Edu TAS Beginner";
+}
+
+.header {
+  background-image: url("../img/wall.png");
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.title {
+  font-size: 2rem;
 }
 
 .container {
+  padding-top: 150px;
   display: flex;
   flex-wrap: wrap;
   width: 80%;
@@ -23,7 +40,6 @@ body {
 }
 
 .card-title {
-  font-family: "Edu TAS Beginner";
   font-weight: 200;
   font-size: 1.3rem;
 }
@@ -42,6 +58,25 @@ body {
 .card-content {
   padding: 0.8em;
 }
+
+.col:hover {
+  animation: rotate 1s;
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0);
+  }
+
+  to {
+    transform: rotate(20deg);
+  }
+}
+
+.col:hover::before {
+  background-image: url("../img/pin.svg");
+}
+
 /* MOBILE FIRST */
 
 @media screen and (min-width:768px) {
@@ -51,7 +86,11 @@ body {
 }
 
 @media screen and (min-width:992px) {
-   .col {
+  .col {
     width: calc(100% / 3 - 40px / 3);
+  }
+
+  .title {
+    font-size: 3rem;
   }
 }
