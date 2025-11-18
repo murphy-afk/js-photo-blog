@@ -13,10 +13,12 @@ axios
       const colElem = document.createElement('div');
       colElem.classList.add("col");
       colElem.innerHTML = `
-        <div class="card">
+      <div class="card">
+        <div class="card-content">
           <img src="${imgUrl}" alt="${title}">
-          <h2>${title}</h2>
+          <h2 class="card-title">${title}</h2>
         </div>
+      </div>
         `
       // const photoCard = `
       // <div class="col">

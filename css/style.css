@@ -10,11 +10,22 @@ img {
   max-width: 100%;
 }
 
+/*******************************/
+body {
+  background-image: url("../img/cork.png");
+}
 
-/* MOBILE FIRST */
 .container {
   display: flex;
   flex-wrap: wrap;
+  width: 80%;
+  margin: 0 auto;
+}
+
+.card-title {
+  font-family: "Edu TAS Beginner";
+  font-weight: 200;
+  font-size: 1.3rem;
 }
 
 .col {
@@ -25,8 +36,13 @@ img {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  margin-bottom: 10px;
 }
 
+.card-content {
+  padding: 0.8em;
+}
+/* MOBILE FIRST */
 
 @media screen and (min-width:768px) {
   .col {
