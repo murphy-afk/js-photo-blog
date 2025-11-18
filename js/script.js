@@ -21,15 +21,7 @@ axios
           <h2 class="card-title">${title}</h2>
         </div>
       </div>
-        `
-      // const photoCard = `
-      // <div class="col">
-      //   <div class="card">
-      //     <img src="${imgUrl}" alt="${title}">
-      //     <h2>${title}</h2>
-      //   </div>
-      // </div>
-      // `;
+        `;
       photosContainer.append(colElem);
     })
   });

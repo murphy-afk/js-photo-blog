@@ -31,6 +31,13 @@ body {
   font-size: 2rem;
 }
 
+.card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
 .container {
   padding-top: 150px;
   display: flex;
@@ -73,10 +80,10 @@ body {
   }
 }
 
-.col:hover::before {
-  background-image: url("../img/pin.svg");
+.col:hover .card::before {
+  content: url("../img/pin.svg");
+  margin-top: 1em;
 }
-
 /* MOBILE FIRST */
 
 @media screen and (min-width:768px) {
