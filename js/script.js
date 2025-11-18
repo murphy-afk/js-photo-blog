@@ -1,3 +1,5 @@
+
+
 const baseUrl = "https://lanciweb.github.io/demo/api/pictures/";
 const photosContainer = document.querySelector(".container");
 axios
@@ -8,14 +10,22 @@ axios
     photoData.forEach((photo) => {
       const title = photo.title;
       const imgUrl = photo.url;
-      const photoCard = `
-      <div class="col">
+      const colElem = document.createElement('div');
+      colElem.classList.add("col");
+      colElem.innerHTML = `
         <div class="card">
           <img src="${imgUrl}" alt="${title}">
           <h2>${title}</h2>
         </div>
-      </div>
-      `;
-      photosContainer.innerHTML += photoCard;
+        `
+      // const photoCard = `
+      // <div class="col">
+      //   <div class="card">
+      //     <img src="${imgUrl}" alt="${title}">
+      //     <h2>${title}</h2>
+      //   </div>
+      // </div>
+      // `;
+      photosContainer.append(colElem);
     })
   });
