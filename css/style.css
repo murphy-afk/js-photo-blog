@@ -25,6 +25,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+  z-index: 100000000;
 }
 
 .title {
@@ -67,7 +68,7 @@ body {
 }
 
 .col:hover {
-  animation: rotate 1s;
+  animation: rotate 1s alternate;
 }
 
 @keyframes rotate {
@@ -82,7 +83,8 @@ body {
 
 .col:hover .card::before {
   content: url("../img/pin.svg");
-  margin-top: 1em;
+  position: absolute;
+  top: 0;
 }
 /* MOBILE FIRST */
 
