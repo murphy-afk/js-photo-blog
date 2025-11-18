@@ -61,6 +61,7 @@ body {
   align-items: center;
   justify-content: center;
   margin-bottom: 10px;
+  position: relative;
 }
 
 .card-content {
@@ -81,11 +82,12 @@ body {
   }
 }
 
-.col:hover .card::before {
+.col::before {
   content: url("../img/pin.svg");
   position: absolute;
   top: 0;
 }
+
 /* MOBILE FIRST */
 
 @media screen and (min-width:768px) {
