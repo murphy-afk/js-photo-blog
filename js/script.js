@@ -10,12 +10,14 @@ axios
     photoData.forEach((photo) => {
       const title = photo.title;
       const imgUrl = photo.url;
+      const date = photo.date;
       const colElem = document.createElement('div');
       colElem.classList.add("col");
       colElem.innerHTML = `
       <div class="card">
         <div class="card-content">
           <img src="${imgUrl}" alt="${title}">
+          <time datetime="datetime">${date}</time>
           <h2 class="card-title">${title}</h2>
         </div>
       </div>
