@@ -16,7 +16,6 @@ const createCard = (photo) => {
   colElem.append(cardElem);
   const cardContent = myCreateElement('div', "card-content");
   cardElem.append(cardContent);
-  cardContent.append(img)
   cardContent.innerHTML = `
           <img src="${url}" alt="${title}">
           <time datetime="datetime">${date}</time>
