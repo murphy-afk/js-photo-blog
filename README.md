@@ -29,3 +29,12 @@ rendi la pagina responsive, in modo che su mobile e tablet le foto si dispongano
 ### Note
 
 Non siete obbligati a usare Bootstrap: siete liberi di decidere come gestire lo stile 🙂
+
+### Bonus Grafico
+(Beautiful UI) La card deve ruotare di qualche grado all hover del mouse e il pin deve scomparire
+(I can’t wait) In attesa della risposta da axios mostriamo una barra di caricamento o un loader animato
+
+### Bonus Coding
+(Refactoring Master) Cercate di ristrutturare il codice in modo da non averlo tutto dentro la risposta ricevuta da axios. Cercate di sfruttare le funzioni per rendere il codice più modulare e più leggibile.
+(Think Different) Cercate di creare la card non utilizzando ls sintassi string literarls, la parola magica è createElement. Anche qui potete farvi aiutare con la scrittura di qualche funzione di utility.
+(Can I Destructure ? 🤠) Cercate di usare il più possibile la destrutturazione o come diavolo si chiama 😹
