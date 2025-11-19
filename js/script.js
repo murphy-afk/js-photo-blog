@@ -5,7 +5,8 @@ const photosContainer = document.querySelector(".container");
 const centerPhoto = document.querySelector(".clicked-post");
 const overlay = document.querySelector(".overlay");
 const closeCenterPhotoBtn = document.querySelector(".close-btn");
-
+const loadingScreen = document.querySelector(".loading-screen");
+const progressBar = document.querySelector(".progress-bar");
 
 function myCreateElement(
   tagType,
@@ -88,37 +89,27 @@ const openOverlay = (card, array) => {
     element.src = clickedCard.url;
   })
   centerPhoto.appendChild(centerPhotoContent);
-  // centerPhoto.innerHTML = `
-  //         <img src="${clickedCard.url}" alt="">
-  //         `;
   removeOverlay(closeCenterPhotoBtn, overlay, centerPhoto, centerPhotoContent);
+}
+
+const addCardClick = (cardsArray, dataArray) => {
+  cardsArray.forEach((card) => {
+    card.addEventListener("click", () => {
+      openOverlay(card, dataArray);
+    })
+  })
 }
 
 axios
   .get("https://lanciweb.github.io/demo/api/pictures/")
   .then((resp) => {
     const photoData = resp.data;
+    loadingScreen.classList.add("d-none");
+    // remove loading screen 
     photoData.forEach((photo) => {
       const photoCard = createCard(photo);
       photosContainer.appendChild(photoCard);
-
       const cards = document.querySelectorAll(".col");
-      cards.forEach((card) => {
-        card.addEventListener("click", () => {
-          openOverlay(card, photoData);
-          // const clickedCardId = parseInt(card.id);
-          // const clickedCard = photoData.find(({ id }) => id === clickedCardId);
-          // console.log(clickedCard);
-          // overlay.classList.remove("d-none");
-          // overlay.classList.add("d-flex");
-          // centerPhoto.innerHTML = `
-          // <img src="${clickedCard.url}" alt="">
-          // `;
-          // closeCenterPhotoBtn.addEventListener("click", () => {
-          //   overlay.classList.remove("d-flex");
-          //   overlay.classList.add("d-none");
-          // })
-        })
-      })
+      addCardClick(cards, photoData);
     })
   })
