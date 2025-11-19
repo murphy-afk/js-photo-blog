@@ -2,6 +2,7 @@
 
 const baseUrl = "https://lanciweb.github.io/demo/api/pictures/";
 const photosContainer = document.querySelector(".container");
+const clickedPost = document.querySelector(".clicked-post");
 
 function myCreateElement(
   tagType,
@@ -40,7 +41,7 @@ function myCreateElement(
 }
 
 const createCard = (photo) => {
-  const { title, url, date } = photo;
+  const { title, url, date, id } = photo;
   const colElem = myCreateElement('div', ["col"],
     [
       myCreateElement('div', ["card"],
@@ -58,7 +59,9 @@ const createCard = (photo) => {
             ],
           )
         ])
-    ])
+    ], (element) => {
+      element.id = id;
+    })
   return colElem
 }
 
