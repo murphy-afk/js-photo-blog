@@ -68,6 +68,20 @@ const createCard = (photo) => {
   return colElem
 }
 
+const openOverlay = (card, array) => {
+    const clickedCardId = parseInt(card.id);
+          const clickedCard = array.find(({ id }) => id === clickedCardId);
+          overlay.classList.remove("d-none");
+          overlay.classList.add("d-flex");
+          centerPhoto.innerHTML = `
+          <img src="${clickedCard.url}" alt="">
+          `;
+          closeCenterPhotoBtn.addEventListener("click", () => {
+            overlay.classList.remove("d-flex");
+            overlay.classList.add("d-none");
+          })
+}
+
 axios
   .get("https://lanciweb.github.io/demo/api/pictures/")
   .then((resp) => {
@@ -77,21 +91,21 @@ axios
       photosContainer.appendChild(photoCard);
 
       const cards = document.querySelectorAll(".col");
-
       cards.forEach((card) => {
         card.addEventListener("click", () => {
-          const clickedCardId = parseInt(card.id);
-          const clickedCard = photoData.find(({id}) => id === clickedCardId);
-          console.log(clickedCard);
-          overlay.classList.remove("d-none");
-          overlay.classList.add("d-flex");
-          centerPhoto.innerHTML = `
-          <img src="${clickedCard.url}" alt="">
-          `;
-          closeCenterPhotoBtn.addEventListener("click", () => {
-          overlay.classList.remove("d-flex");
-          overlay.classList.add("d-none");
-          })
+          openOverlay(card, photoData);
+          // const clickedCardId = parseInt(card.id);
+          // const clickedCard = photoData.find(({ id }) => id === clickedCardId);
+          // console.log(clickedCard);
+          // overlay.classList.remove("d-none");
+          // overlay.classList.add("d-flex");
+          // centerPhoto.innerHTML = `
+          // <img src="${clickedCard.url}" alt="">
+          // `;
+          // closeCenterPhotoBtn.addEventListener("click", () => {
+          //   overlay.classList.remove("d-flex");
+          //   overlay.classList.add("d-none");
+          // })
         })
       })
     })

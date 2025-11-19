@@ -99,22 +99,20 @@ body {
   left: 0;
   bottom: 0;
   right: 0;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
   flex-direction: column;
-  /* gap: 10px; */
+  gap: 10px;
 }
 
 .clicked-post {
-  /* background-image: url("../img/example-img.jpeg"); */
-  width: 50%;
-  height: 50%;
-  position: relative;
+  width: 60%;
+  height: 60%;
+  
 }
 
 .close-btn {
-  position: relative;
-  top: -20px;
+  margin-top: 180px;
   border-radius: 50px;
   cursor: pointer;
   border: 0;
@@ -141,6 +139,15 @@ body {
   .col {
     width: calc(100% / 2 - 40px / 2);
   }
+
+  .clicked-post {
+  width: 50%;
+  height: 50%;
+}
+
+.close-btn {
+  margin-top: 100px;
+}
 }
 
 @media screen and (min-width:992px) {
@@ -151,4 +158,13 @@ body {
   .title {
     font-size: 3rem;
   }
+
+   .clicked-post {
+  width: 30%;
+  height: 30%;
+}
+
+.close-btn {
+  margin-top: 90px;
+}
 }
