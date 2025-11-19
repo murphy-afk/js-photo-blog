@@ -109,7 +109,7 @@ axios
     photoData.forEach((photo) => {
       const photoCard = createCard(photo);
       photosContainer.appendChild(photoCard);
-      const cards = document.querySelectorAll(".col");
-      addCardClick(cards, photoData);
     })
+    const cards = document.querySelectorAll(".col");
+    addCardClick(cards, photoData);
   })
