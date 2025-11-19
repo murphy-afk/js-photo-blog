@@ -31,7 +31,7 @@ function myCreateElement(
   } else if (typeof content === "string") {
     newElem.innerHTML = content;
   } else {
-    console.error("Non posso aggiungere l'elemento");
+    console.log("Non posso aggiungere l'elemento");
   }
 
 
@@ -68,6 +68,6 @@ axios
     const photoData = resp.data;
     photoData.forEach((photo) => {
       const photoCard = createCard(photo);
-      photosContainer.append(photoCard);
+      photosContainer.appendChild(photoCard);
     })
   })
