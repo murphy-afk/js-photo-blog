@@ -68,8 +68,15 @@ body {
   padding: 0.8em;
 }
 
+.col::before {
+  content: url("../img/pin.svg");
+  position: absolute;
+  top: 0;
+}
+
 .col:hover {
   animation: rotate 1s alternate;
+  
 }
 
 @keyframes rotate {
@@ -82,11 +89,10 @@ body {
   }
 }
 
-.col::before {
-  content: url("../img/pin.svg");
-  position: absolute;
-  top: 0;
+.col:hover::before {
+  opacity: 0;
 }
+
 
 .overlay {
   background-color: rgba(0, 0, 0, 0.3);
@@ -108,7 +114,7 @@ body {
 .clicked-post {
   width: 60%;
   height: 60%;
-  
+
 }
 
 .close-btn {
@@ -141,13 +147,13 @@ body {
   }
 
   .clicked-post {
-  width: 50%;
-  height: 50%;
-}
+    width: 50%;
+    height: 50%;
+  }
 
-.close-btn {
-  margin-top: 100px;
-}
+  .close-btn {
+    margin-top: 100px;
+  }
 }
 
 @media screen and (min-width:992px) {
@@ -159,12 +165,12 @@ body {
     font-size: 3rem;
   }
 
-   .clicked-post {
-  width: 30%;
-  height: 30%;
-}
+  .clicked-post {
+    width: 30%;
+    height: 30%;
+  }
 
-.close-btn {
-  margin-top: 90px;
-}
+  .close-btn {
+    margin-top: 90px;
+  }
 }

@@ -69,17 +69,17 @@ const createCard = (photo) => {
 }
 
 const openOverlay = (card, array) => {
-    const clickedCardId = parseInt(card.id);
-          const clickedCard = array.find(({ id }) => id === clickedCardId);
-          overlay.classList.remove("d-none");
-          overlay.classList.add("d-flex");
-          centerPhoto.innerHTML = `
+  const clickedCardId = parseInt(card.id);
+  const clickedCard = array.find(({ id }) => id === clickedCardId);
+  overlay.classList.remove("d-none");
+  overlay.classList.add("d-flex");
+  centerPhoto.innerHTML = `
           <img src="${clickedCard.url}" alt="">
           `;
-          closeCenterPhotoBtn.addEventListener("click", () => {
-            overlay.classList.remove("d-flex");
-            overlay.classList.add("d-none");
-          })
+  closeCenterPhotoBtn.addEventListener("click", () => {
+    overlay.classList.remove("d-flex");
+    overlay.classList.add("d-none");
+  })
 }
 
 axios
