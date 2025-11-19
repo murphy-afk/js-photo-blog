@@ -68,16 +68,13 @@ const createCard = (photo) => {
     })
   return colElem
 }
-const removeOverlay = (button, overlay, parent, child) => {
-  button.addEventListener("click", () => {
-    overlay.classList.remove("d-flex");
-    overlay.classList.add("d-none");
-    // console.log(parent, child);
-    if (parent.contains(child)) {
-      parent.removeChild(child);
-    }
-    // centerPhoto.removeChild(centerPhotoContent)
-  })
+const removeOverlay = (overlay, parent, child) => {
+  overlay.classList.remove("d-flex");
+  overlay.classList.add("d-none");
+  if (parent.contains(child)) {
+    parent.removeChild(child);
+    // centerPhoto.removeChild(centerPhotoContent)  
+  }
 }
 
 const openOverlay = (card, array) => {
@@ -89,7 +86,12 @@ const openOverlay = (card, array) => {
     element.src = clickedCard.url;
   })
   centerPhoto.appendChild(centerPhotoContent);
-  removeOverlay(closeCenterPhotoBtn, overlay, centerPhoto, centerPhotoContent);
+  overlay.addEventListener("click", () => {
+    removeOverlay(overlay, centerPhoto, centerPhotoContent);
+  })
+  closeCenterPhotoBtn.addEventListener("click", () => {
+    removeOverlay(overlay, centerPhoto, centerPhotoContent);
+  })
 }
 
 const addCardClick = (cardsArray, dataArray) => {
@@ -99,6 +101,7 @@ const addCardClick = (cardsArray, dataArray) => {
     })
   })
 }
+
 
 axios
   .get("https://lanciweb.github.io/demo/api/pictures/")
