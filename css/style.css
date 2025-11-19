@@ -99,17 +99,25 @@ body {
   left: 0;
   bottom: 0;
   right: 0;
-  /* display: none; */
-  display: flex;
   justify-content: center;
   align-items: center;
 }
 
 .clicked-post {
-  background-image: url("../img/example-img.jpeg");
-  width: 200px;
-  height: 200px;
+  /* background-image: url("../img/example-img.jpeg"); */
+  width: 50%;
+  height: 50%;
   position: relative;
+}
+
+/* UTILITY */
+
+.d-none {
+  display: none;
+}
+
+.d-flex {
+  display: flex;
 }
 
 /* MOBILE FIRST */

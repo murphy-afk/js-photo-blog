@@ -2,7 +2,9 @@
 
 const baseUrl = "https://lanciweb.github.io/demo/api/pictures/";
 const photosContainer = document.querySelector(".container");
-const clickedPost = document.querySelector(".clicked-post");
+const centerPhoto = document.querySelector(".clicked-post");
+const overlay = document.querySelector(".overlay");
+
 
 function myCreateElement(
   tagType,
@@ -72,5 +74,21 @@ axios
     photoData.forEach((photo) => {
       const photoCard = createCard(photo);
       photosContainer.appendChild(photoCard);
+
+      const cards = document.querySelectorAll(".col");
+
+      cards.forEach((card) => {
+        card.addEventListener("click", () => {
+          const clickedCardId = parseInt(card.id);
+          const clickedCard = photoData.find(({id}) => id === clickedCardId);
+          console.log(clickedCard);
+          overlay.classList.remove("d-none");
+          overlay.classList.add("d-flex");
+          centerPhoto.innerHTML = `
+          <img src="${clickedCard.url}" alt="">
+          `;
+
+        })
+      })
     })
   })
