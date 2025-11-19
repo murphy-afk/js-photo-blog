@@ -67,19 +67,31 @@ const createCard = (photo) => {
     })
   return colElem
 }
+const removeOverlay = (button, overlay, parent, child) => {
+  button.addEventListener("click", () => {
+    overlay.classList.remove("d-flex");
+    overlay.classList.add("d-none");
+    // console.log(parent, child);
+    if (parent.contains(child)) {
+      parent.removeChild(child);
+    }
+    // centerPhoto.removeChild(centerPhotoContent)
+  })
+}
 
 const openOverlay = (card, array) => {
-  const clickedCardId = parseInt(card.id);
+  let clickedCardId = parseInt(card.id);
   const clickedCard = array.find(({ id }) => id === clickedCardId);
   overlay.classList.remove("d-none");
   overlay.classList.add("d-flex");
-  centerPhoto.innerHTML = `
-          <img src="${clickedCard.url}" alt="">
-          `;
-  closeCenterPhotoBtn.addEventListener("click", () => {
-    overlay.classList.remove("d-flex");
-    overlay.classList.add("d-none");
+  const centerPhotoContent = myCreateElement('img', ["center-img"], [], (element) => {
+    element.src = clickedCard.url;
   })
+  centerPhoto.appendChild(centerPhotoContent);
+  // centerPhoto.innerHTML = `
+  //         <img src="${clickedCard.url}" alt="">
+  //         `;
+  removeOverlay(closeCenterPhotoBtn, overlay, centerPhoto, centerPhotoContent);
 }
 
 axios
