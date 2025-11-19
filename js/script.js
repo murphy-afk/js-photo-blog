@@ -4,6 +4,7 @@ const baseUrl = "https://lanciweb.github.io/demo/api/pictures/";
 const photosContainer = document.querySelector(".container");
 const centerPhoto = document.querySelector(".clicked-post");
 const overlay = document.querySelector(".overlay");
+const closeCenterPhotoBtn = document.querySelector(".close-btn");
 
 
 function myCreateElement(
@@ -87,7 +88,10 @@ axios
           centerPhoto.innerHTML = `
           <img src="${clickedCard.url}" alt="">
           `;
-
+          closeCenterPhotoBtn.addEventListener("click", () => {
+          overlay.classList.remove("d-flex");
+          overlay.classList.add("d-none");
+          })
         })
       })
     })
