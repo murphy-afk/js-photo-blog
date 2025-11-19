@@ -116,13 +116,10 @@ body {
   width: 50%;
   height: 50%;
   opacity: 1;
-  position: absolute;
-  top: 110px;
-  z-index: 10000000000;
 }
 
 .close-btn {
-  margin-top: 90px;
+  margin-top: 100px;
   border-radius: 50px;
   cursor: pointer;
   border: 0;
