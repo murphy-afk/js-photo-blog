@@ -6,14 +6,13 @@ const centerPhoto = document.querySelector(".clicked-post");
 const overlay = document.querySelector(".overlay");
 const closeCenterPhotoBtn = document.querySelector(".close-btn");
 const loadingScreen = document.querySelector(".loading-screen");
-const progressBar = document.querySelector(".progress-bar");
 
-function myCreateElement(
+const myCreateElement = (
   tagType,
   className = [],
   content = [],
   callback = false
-) {
+) => {
   // tag 
   const newElem = document.createElement(tagType);
   // class 
@@ -22,25 +21,22 @@ function myCreateElement(
       newElem.classList.add(className[i]);
     }
   }
-  // callback 
-  if (callback) {
-    callback(newElem);
-  }
   // content
   if (Array.isArray(content)) {
     for (let i = 0; i < content.length; i++) {
       newElem.appendChild(content[i]);
     }
-  } else if (content instanceof HTMLElement) {
-    newElem.appendChild(content);
+    // } else if (content instanceof HTMLElement) {
+    //   newElem.appendChild(content);
   } else if (typeof content === "string") {
     newElem.innerHTML = content;
   } else {
     console.log("Non posso aggiungere l'elemento");
   }
-
-
-
+  // callback 
+  if (callback) {
+    callback(newElem);
+  }
   return newElem
 }
 
@@ -73,7 +69,7 @@ const removeOverlay = (overlay, parent, child) => {
   overlay.classList.add("d-none");
   if (parent.contains(child)) {
     parent.removeChild(child);
-    // centerPhoto.removeChild(centerPhotoContent)  
+    centerPhoto.removeChild(centerPhotoContent)
   }
 }
 
@@ -104,15 +100,15 @@ const addCardClick = (cardsArray, dataArray) => {
 
 
 axios
-  .get("https://lanciweb.github.io/demo/api/pictures/")
+  .get(baseUrl)
   .then((resp) => {
     const photoData = resp.data;
-    loadingScreen.classList.add("d-none");
-    // remove loading screen 
     photoData.forEach((photo) => {
       const photoCard = createCard(photo);
       photosContainer.appendChild(photoCard);
     })
+    // remove loading screen 
+    loadingScreen.classList.add("d-none");
     const cards = document.querySelectorAll(".col");
     addCardClick(cards, photoData);
   })
